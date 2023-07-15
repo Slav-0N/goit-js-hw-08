@@ -1,9 +1,10 @@
+import Player from '@vimeo/player';
 const iframe = document.querySelector('iframe');
 // const player = new Vimeo.Player(iframe);
 
 const savedTime = JSON.parse(localStorage.getItem("videoplayer-current-time"));
 const throttle = require('lodash.throttle');
-import Player from '@vimeo/player';
+
 
 
 const player = new Player(iframe);
@@ -19,6 +20,7 @@ function timer(event) {
 
 player.setCurrentTime(savedTime).then(function(seconds) {
     // seconds = the actual time that the player seeked to
+    console.log(seconds);
 }).catch(function(error) {
     switch (error.name) {
         case 'RangeError':
@@ -30,4 +32,3 @@ player.setCurrentTime(savedTime).then(function(seconds) {
             break;
     }
 });
-console.log("sd1");
