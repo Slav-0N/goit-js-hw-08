@@ -30,3 +30,4 @@ player.setCurrentTime(savedTime).then(function(seconds) {
             break;
     }
 });
+console.log("sd1");
