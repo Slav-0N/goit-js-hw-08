@@ -38,7 +38,10 @@ galleryElem.insertAdjacentHTML("afterbegin", template);
 //   captionDelay: 250,
 // });
 
-let gallery = new SimpleLightbox('.gallery a');
-gallery.on('show.simplelightbox', function () {
-	// do something…
+const gallery = new SimpleLightbox('.gallery a', {
+  captionsData: "alt", 
+  captionDelay: 250,
 });
+// gallery.on('show.simplelightbox', function () {
+// 	// do something…
+// });
