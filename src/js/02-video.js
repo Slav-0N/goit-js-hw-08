@@ -16,6 +16,6 @@ function savePlayedTime(event) {
 
 
 let localStorageTime = Number(localStorage.getItem("videoplayer-current-time"));
-console.log(localStorageTime);
 
-player.setCurrentTime(localStorageTime);
+
+player.setCurrentTime(localStorageTime || 0);
