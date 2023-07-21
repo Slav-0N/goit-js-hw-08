@@ -46,8 +46,8 @@ function sorageMessageReturn() {
   if (localStorage.getItem(STORAGE_KEY)) {
     const localStorageElement = localStorage.getItem(STORAGE_KEY);
     const { email, message } = JSON.parse(localStorageElement);
-    form.elements.message.value = message;
-    form.elements.email.value = email;
+    form.elements.message.value = message || "";
+    form.elements.email.value = email || "";
   }
   
 };
