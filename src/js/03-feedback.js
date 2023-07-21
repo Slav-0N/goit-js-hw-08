@@ -5,18 +5,21 @@ const STORAGE_KEY = 'feedback-form-state';
 let formObjEl = {};
 
 
+sorageMessageReturn()
 
 form.addEventListener('input', throttle(showTextareaInput, 500));
 
 function showTextareaInput(event) {
 
   if (event.target.name === 'message') {
-    formObjEl[event.target.name] = event.target.value;
+    formObjEl.message = event.target.value;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formObjEl));
   } else if(event.target.name === 'email') {     
-  formObjEl[event.target.name] = event.target.value;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(formObjEl));
+    formObjEl.email = event.target.value;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(formObjEl));
   };
+  
+
 };
 
 
@@ -30,14 +33,25 @@ function submitClick(event) {
   if (email.value === '' || message.value === '') {
     alert('Всі поля повинні бути заповнені');
   } else {
-    console.log(formObjEl);
 
-    formObjEl = {};
+    console.log(formObjEl);
+    
     event.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
+    formObjEl = {};
   };
-
 };
+
+function sorageMessageReturn() {
+  if (localStorage.getItem(STORAGE_KEY)) {
+    const localStorageElement = localStorage.getItem(STORAGE_KEY);
+    const { email, message } = JSON.parse(localStorageElement);
+    form.elements.message.value = message;
+    form.elements.email.value = email;
+  }
+  
+};
+
 
 
 
